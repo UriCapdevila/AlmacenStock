@@ -1,10 +1,14 @@
-import type { Metadata } from 'next';
-import './globals.css';
-import { Toaster } from '@/components/ui/toaster';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+// Importamos tu layout nuevo
+import { DashboardLayout } from "@/components/dashboard/dashboard-layout"; // Ajusta la ruta si es necesario
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'AlmacenStock',
-  description: 'ERP de control de stock para la industria alimenticia.',
+  title: "AlmacenStock ERP",
+  description: "Sistema de gestión de stock inteligente",
 };
 
 export default function RootLayout({
@@ -14,17 +18,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="font-body antialiased">
-        {children}
-        <Toaster />
+      <body className={inter.className}>
+        {/* Aquí aplicamos el Sidebar a toda la app */}
+        <DashboardLayout>
+          {children}
+        </DashboardLayout>
       </body>
     </html>
   );
